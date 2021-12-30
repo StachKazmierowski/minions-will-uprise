@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-MATRICES_PATH = "../payoff_matrices/"
+MATRICES_PATH = "../../coolHedge/payoff_matrices/"
 MATRICES_RAPORTS_PATH = "../matrices_creation_reports/"
 RESULT_PRECISION = 10**(-20)
 PHI = 1/8
@@ -32,8 +32,9 @@ def divides(A, n):
 
 def try_reading_matrix(A, B, fields_number):
     try:
-        path = MATRICES_PATH + str(fields_number) + "_fields/payoff_matrix(" + str(A) + \
+        path = MATRICES_PATH + "payoff_matrix(" + str(A) + \
            "," + str(B) + "," + str(fields_number) + ").csv"
+        print(path)
         payoff_mat = pd.read_csv(path, index_col=0)
     except:
         print("Loaded failed")

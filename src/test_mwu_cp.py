@@ -56,7 +56,7 @@ def MWU_game_algorithm_experiment(payoff_mat, phi=1/2, steps_number=10000):
             curr_index *= 2
     return times, row_row, col_col, row_col
 
-def run_experiment(A, B, n, phis_bound=7, max_steps_power_mult=13):
+def run_experiment(A, B, n, phis_bound, max_steps_power_mult):
     max_steps = 125 * 2 ** max_steps_power_mult
     matrix = -try_reading_matrix_numpy(A,B,n)
 
@@ -65,7 +65,7 @@ def run_experiment(A, B, n, phis_bound=7, max_steps_power_mult=13):
     col_col = []
     row_col = []
 
-    phis = [(1/2)**i for i in range(5, phis_bound+1)]
+    phis = [(1/2)**i for i in range(1, phis_bound+1)]
     columns_names = [125 * 2**i for i in range(max_steps_power_mult + 1)]
     for phi in phis:
         result = MWU_game_algorithm_experiment(matrix, phi, max_steps)
